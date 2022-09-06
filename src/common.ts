@@ -1,3 +1,26 @@
+export enum DataType {
+  STRING = 'string',
+  NUMBER = 'number',
+  BOOLEAN = 'boolean',
+  OBJECT = 'object',
+  ARRAY = 'array',
+}
+
+export const typeMap: Record<DataType, any> = {
+  [DataType.STRING]: '',
+  [DataType.BOOLEAN]: true,
+  [DataType.NUMBER]: 0,
+  [DataType.OBJECT]: {},
+  [DataType.ARRAY]: [],
+}
+
+export const getTypeString = (element: any): string => {
+  return Object.prototype.toString
+    .call(element)
+    .match(/\w+/g)?.[1]
+    .toLowerCase() as string
+}
+
 export const getQuoteAddress = (
   oldElement: any,
   newElement: any,
@@ -19,29 +42,4 @@ export const getQuoteAddress = (
     }
   }
   return currentData
-}
-
-export const typeList: string[] = [
-  'string',
-  'number',
-  'boolean',
-  'object',
-  'array',
-]
-
-export const typeMap: { [keyof: string]: any } = {
-  string: '',
-  boolean: true,
-  number: 0,
-  object: {},
-  array: [],
-}
-
-export const getTypeString = (element: any) => {
-  return (
-    Object.prototype.toString
-      .call(element)
-      .match(/\w+/g)?.[1]
-      .toLowerCase() ?? ''
-  )
 }

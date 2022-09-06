@@ -3,7 +3,7 @@ import './styles/index.less'
 import React, { useEffect, useState } from 'react'
 import { ConfigContext } from './store'
 import cloneDeep from 'lodash.clonedeep'
-import JsonView from './JsonView'
+import JsonView from './components/JsonView'
 
 export type JsonEditorProps = {
   data: Record<string, any>

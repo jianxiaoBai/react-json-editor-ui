@@ -1,9 +1,9 @@
 import { Input, InputNumber, Select } from 'antd'
 import React, { useContext, useEffect } from 'react'
-import { getQuoteAddress, getTypeString, typeMap } from './util'
+import { getQuoteAddress, getTypeString, typeMap } from '../common'
 import AddItem from './AddItem'
-import { ConfigContext } from './store'
-import { JsonEditorProps } from '.'
+import { ConfigContext } from '../store'
+import { JsonEditorProps } from '../../dist'
 import ArrayView from './ArrayView'
 import ToolsView from './Tools'
 

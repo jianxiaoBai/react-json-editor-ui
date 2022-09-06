@@ -3,8 +3,8 @@ import { Button, Col, Input, Select, Space } from 'antd'
 import cloneDeep from 'lodash.clonedeep'
 import React from 'react'
 import { useContext, useState } from 'react'
-import { ConfigContext } from './store'
-import { typeList, typeMap } from './util'
+import { ConfigContext } from '../store'
+import { DataType, typeMap } from '../common'
 
 const AddItem = (props: {
   uniqueKey: string
@@ -34,7 +34,7 @@ const AddItem = (props: {
     templateData[uniqueKey]['value'] = event.target.value
     setTemplateData({ ...templateData })
   }
-  const onChangeTempType = (uniqueKey: any, type: any) => {
+  const onChangeTempType = (uniqueKey: string, type: DataType) => {
     templateData[uniqueKey]['type'] = type
     templateData[uniqueKey]['value'] = typeMap[type]
     setTemplateData({
@@ -69,9 +69,9 @@ const AddItem = (props: {
               size="small"
               style={{ width: '100px' }}
               onChange={value => onChangeTempType(uniqueKey, value)}
-              defaultValue={'string'}
+              defaultValue={DataType.STRING}
             >
-              {typeList.map(item => (
+              {Object.keys(DataType).map(item => (
                 <Select.Option
                   value={item}
                   key={item}

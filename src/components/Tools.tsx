@@ -1,8 +1,8 @@
 import { MinusSquareOutlined } from '@ant-design/icons'
 import { Select } from 'antd'
 import React from 'react'
-import { ConfigContext } from './store'
-import { getTypeString, typeList } from './util'
+import { ConfigContext } from '../store'
+import { getTypeString, DataType } from '../common'
 
 function ToolsView(props: {
   fieldValue: any
@@ -20,7 +20,7 @@ function ToolsView(props: {
               onChange={value => onChangeType(value, props.fieldValue)}
               defaultValue={getTypeString(props.fieldValue)}
             >
-              {typeList.map(item => (
+              {Object.keys(DataType).map(item => (
                 <Select.Option value={item} key={item}>
                   {item}
                 </Select.Option>
