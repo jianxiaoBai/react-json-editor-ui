@@ -1,56 +1,56 @@
-import { PlusSquareOutlined } from '@ant-design/icons';
-import { Button, Col, Input, Select, Space } from 'antd';
-import cloneDeep from 'lodash.clonedeep';
-import React from 'react';
-import { useContext, useState } from 'react';
-import { ConfigContext } from './store';
-import { typeList, typeMap } from './util';
+import { PlusSquareOutlined } from '@ant-design/icons'
+import { Button, Col, Input, Select, Space } from 'antd'
+import cloneDeep from 'lodash.clonedeep'
+import React from 'react'
+import { useContext, useState } from 'react'
+import { ConfigContext } from './store'
+import { typeList, typeMap } from './util'
 
 const AddItem = (props: {
-  uniqueKey: string;
-  sourceData: any;
-  deepLevel: number;
+  uniqueKey: string
+  sourceData: any
+  deepLevel: number
 }) => {
-  const { setEditObject, editObject } = useContext(ConfigContext);
-  const { uniqueKey, sourceData } = props;
-  const isArray = Array.isArray(sourceData);
-  const [templateData, setTemplateData] = useState<any>({});
-  const [showIncreaseMap, setShowIncreaseMap] = useState<any>({});
+  const { setEditObject, editObject } = useContext(ConfigContext)
+  const { uniqueKey, sourceData } = props
+  const isArray = Array.isArray(sourceData)
+  const [templateData, setTemplateData] = useState<any>({})
+  const [showIncreaseMap, setShowIncreaseMap] = useState<any>({})
   const onClickIncrease = (key: string, value: boolean) => {
-    showIncreaseMap[key] = value;
-    templateData[key] = {};
+    showIncreaseMap[key] = value
+    templateData[key] = {}
     setTemplateData({
       ...templateData,
-    });
+    })
     setShowIncreaseMap({
       ...showIncreaseMap,
-    });
-  };
+    })
+  }
   const changeInputKey = (uniqueKey: string, event: any) => {
-    templateData[uniqueKey]['key'] = event.target.value;
-    setTemplateData({ ...templateData });
-  };
+    templateData[uniqueKey]['key'] = event.target.value
+    setTemplateData({ ...templateData })
+  }
   const changeInputValue = (uniqueKey: string, event: any) => {
-    templateData[uniqueKey]['value'] = event.target.value;
-    setTemplateData({ ...templateData });
-  };
+    templateData[uniqueKey]['value'] = event.target.value
+    setTemplateData({ ...templateData })
+  }
   const onChangeTempType = (uniqueKey: any, type: any) => {
-    templateData[uniqueKey]['type'] = type;
-    templateData[uniqueKey]['value'] = typeMap[type];
+    templateData[uniqueKey]['type'] = type
+    templateData[uniqueKey]['value'] = typeMap[type]
     setTemplateData({
       ...templateData,
-    });
-  };
+    })
+  }
   const onConfirmIncrease = (uniqueKey: any, sourceData: any) => {
-    const { key: aKey, value } = cloneDeep(templateData[uniqueKey]);
+    const { key: aKey, value } = cloneDeep(templateData[uniqueKey])
     if (isArray) {
-      sourceData.push(value);
+      sourceData.push(value)
     } else {
-      sourceData[aKey] = value;
+      sourceData[aKey] = value
     }
-    setEditObject({ ...editObject });
-    onClickIncrease(uniqueKey, false);
-  };
+    setEditObject({ ...editObject })
+    onClickIncrease(uniqueKey, false)
+  }
   return (
     <div className="addItem" key={uniqueKey}>
       {showIncreaseMap[uniqueKey] ? (
@@ -115,6 +115,6 @@ const AddItem = (props: {
         </Col>
       )}
     </div>
-  );
-};
-export default AddItem;
+  )
+}
+export default AddItem

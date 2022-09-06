@@ -1,68 +1,64 @@
-import { Input, InputNumber, Select } from 'antd';
-import React, { useContext, useEffect } from 'react';
-import { getQuoteAddress, getTypeString, typeMap } from './util';
-import AddItem from './AddItem';
-import { ConfigContext } from './store';
-import { JsonEditorProps } from '.';
-import ArrayView from './ArrayView';
-import ToolsView from './Tools';
+import { Input, InputNumber, Select } from 'antd'
+import React, { useContext, useEffect } from 'react'
+import { getQuoteAddress, getTypeString, typeMap } from './util'
+import AddItem from './AddItem'
+import { ConfigContext } from './store'
+import { JsonEditorProps } from '.'
+import ArrayView from './ArrayView'
+import ToolsView from './Tools'
 
 function JsonView(props: JsonEditorProps) {
-  const { editObject, setEditObject } = useContext(ConfigContext);
+  const { editObject, setEditObject } = useContext(ConfigContext)
 
   useEffect(() => {
-    props.onChange(editObject);
-  }, [editObject]);
+    props.onChange(editObject)
+  }, [editObject])
 
   const syncData = (data: Record<string, any>) => {
-    setEditObject({ ...data });
-  };
+    setEditObject({ ...data })
+  }
 
   const onClickDelete = (key: string, sourceData: any) => {
     if (Array.isArray(sourceData)) {
-      sourceData.splice(+key, 1);
+      sourceData.splice(+key, 1)
     } else {
-      Reflect.deleteProperty(sourceData, key);
+      Reflect.deleteProperty(sourceData, key)
     }
-    syncData(editObject);
-  };
+    syncData(editObject)
+  }
 
   const onChangeType = (type: string, fieldValue: any) => {
-    const newEditObject = getQuoteAddress(
-      fieldValue,
-      typeMap[type],
-      editObject
-    );
-    syncData(newEditObject);
-  };
+    const newEditObject = getQuoteAddress(fieldValue, typeMap[type], editObject)
+    syncData(newEditObject)
+  }
 
   const onChangeKey = (
     event: React.ChangeEvent<HTMLInputElement>,
     currentKey: string,
     source: Record<string, any>
   ) => {
-    const newValue: Record<string, any> = {};
+    const newValue: Record<string, any> = {}
     for (const key in source) {
       if (Object.prototype.hasOwnProperty.call(source, key)) {
         if (key === currentKey) {
-          newValue[event.target.value] = source[key];
+          newValue[event.target.value] = source[key]
         } else {
-          newValue[key] = source[key];
+          newValue[key] = source[key]
         }
       }
     }
-    const newTotalData = getQuoteAddress(source, newValue, editObject);
-    syncData(newTotalData);
-  };
+    const newTotalData = getQuoteAddress(source, newValue, editObject)
+    syncData(newTotalData)
+  }
 
   const onChangeValue = (
     value: any,
     key: string,
     source: Record<string, any>
   ) => {
-    source[key] = value;
-    syncData(editObject);
-  };
+    source[key] = value
+    syncData(editObject)
+  }
 
   const getValue = (
     fieldValue: any,
@@ -71,7 +67,7 @@ function JsonView(props: JsonEditorProps) {
     deepLevel: number,
     deepLevelJoin: string
   ) => {
-    const thatType = getTypeString(fieldValue);
+    const thatType = getTypeString(fieldValue)
     switch (thatType) {
       case 'array':
         return (
@@ -86,14 +82,14 @@ function JsonView(props: JsonEditorProps) {
               getValue={getValue}
             />
           </span>
-        );
+        )
       case 'object':
         return (
           <span style={{ marginBottom: '10px' }}>
             <b>Object{`{${Object.keys(fieldValue).length}}`}:</b>
             {renderJsonConfig(fieldValue, deepLevel + 1, deepLevelJoin)}
           </span>
-        );
+        )
       case 'string':
         return (
           <Input
@@ -104,7 +100,7 @@ function JsonView(props: JsonEditorProps) {
               onChangeValue(event.target.value, fieldKey, sourceData)
             }
           />
-        );
+        )
       case 'null':
       case 'number':
         return (
@@ -113,17 +109,17 @@ function JsonView(props: JsonEditorProps) {
             placeholder={fieldValue}
             value={fieldValue}
             onChange={(value: number) => {
-              onChangeValue(value, fieldKey, sourceData);
+              onChangeValue(value, fieldKey, sourceData)
             }}
           />
-        );
+        )
       case 'boolean':
         return (
           <Select
             style={{ width: '100px' }}
             defaultValue={true}
             onChange={(value: boolean) => {
-              onChangeValue(value, fieldKey, sourceData);
+              onChangeValue(value, fieldKey, sourceData)
             }}
           >
             <Select.Option value={true} label="true">
@@ -133,15 +129,15 @@ function JsonView(props: JsonEditorProps) {
               false
             </Select.Option>
           </Select>
-        );
+        )
     }
-  };
+  }
   const renderJsonConfig = (
     sourceData: any,
     deepLevel: number = 0,
     deepLevelJoin: string = `${deepLevel}`
   ) => {
-    const keyList = Object.keys(sourceData);
+    const keyList = Object.keys(sourceData)
     if (!keyList.length) {
       return (
         <div style={{ marginLeft: '20px' }}>
@@ -151,14 +147,14 @@ function JsonView(props: JsonEditorProps) {
             sourceData={sourceData}
           />
         </div>
-      );
+      )
     }
     return (
       <div className="blockContent">
         <div style={{ marginTop: '10px' }}>
           {keyList.map((fieldKey, index) => {
-            const uniqueKey = `${deepLevelJoin}-${index}`;
-            const fieldValue = sourceData[fieldKey];
+            const uniqueKey = `${deepLevelJoin}-${index}`
+            const fieldValue = sourceData[fieldKey]
             return (
               <div key={uniqueKey} className="indexLine">
                 <span className="jsonKey">
@@ -188,7 +184,7 @@ function JsonView(props: JsonEditorProps) {
                   }
                 </span>
               </div>
-            );
+            )
           })}
         </div>
         <div>
@@ -200,8 +196,8 @@ function JsonView(props: JsonEditorProps) {
           />
         </div>
       </div>
-    );
-  };
+    )
+  }
 
   return (
     <ConfigContext.Provider
@@ -214,7 +210,7 @@ function JsonView(props: JsonEditorProps) {
     >
       <div>{renderJsonConfig(editObject)}</div>
     </ConfigContext.Provider>
-  );
+  )
 }
 
-export default JsonView;
+export default JsonView

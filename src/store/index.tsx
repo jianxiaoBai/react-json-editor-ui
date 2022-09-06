@@ -1,3 +1,3 @@
-import React from 'react';
+import React from 'react'
 
-export const ConfigContext = React.createContext<any>(null);
+export const ConfigContext = React.createContext<any>(null)

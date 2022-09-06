@@ -1,13 +1,13 @@
-import { MinusSquareOutlined } from '@ant-design/icons';
-import { Select } from 'antd';
-import React from 'react';
-import { ConfigContext } from './store';
-import { getTypeString, typeList } from './util';
+import { MinusSquareOutlined } from '@ant-design/icons'
+import { Select } from 'antd'
+import React from 'react'
+import { ConfigContext } from './store'
+import { getTypeString, typeList } from './util'
 
 function ToolsView(props: {
-  fieldValue: any;
-  fieldKey: string;
-  sourceData: any;
+  fieldValue: any
+  fieldKey: string
+  sourceData: any
 }) {
   return (
     <ConfigContext.Consumer>
@@ -35,6 +35,6 @@ function ToolsView(props: {
         </span>
       )}
     </ConfigContext.Consumer>
-  );
+  )
 }
-export default ToolsView;
+export default ToolsView

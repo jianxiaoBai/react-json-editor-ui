@@ -1,9 +1,9 @@
 .blockContent {
   margin-left: 20px;
   position: relative;
-  .jsonKey,.jsonValue  {
-    margin-right: 10px;
-  }
+}
+.jsonKey,.jsonValue  {
+  margin-right: 10px;
 }
 
 .indexLine {
@@ -15,9 +15,9 @@
   position: absolute;
   right: 0;
   top: 0;
-  .iconSubtraction {
-    margin-left: 10px;
-  }
+}
+.iconSubtraction {
+  margin-left: 10px;
 }
 
 .addItem {
