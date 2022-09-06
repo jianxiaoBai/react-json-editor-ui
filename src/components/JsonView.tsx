@@ -1,6 +1,6 @@
 import { Input, InputNumber, Select } from 'antd'
 import React, { useContext, useEffect } from 'react'
-import { getQuoteAddress, getTypeString, typeMap } from '../common'
+import { DataType, getQuoteAddress, getTypeString, typeMap } from '../common'
 import AddItem from './AddItem'
 import { ConfigContext } from '../store'
 import { JsonEditorProps } from '../../dist'
@@ -27,7 +27,7 @@ function JsonView(props: JsonEditorProps) {
     syncData(editObject)
   }
 
-  const onChangeType = (type: string, fieldValue: any) => {
+  const onChangeType = (type: DataType, fieldValue: any) => {
     const newEditObject = getQuoteAddress(fieldValue, typeMap[type], editObject)
     syncData(newEditObject)
   }
