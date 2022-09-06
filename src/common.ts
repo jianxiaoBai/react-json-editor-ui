@@ -43,3 +43,17 @@ export const getQuoteAddress = (
   }
   return currentData
 }
+
+export const isObject = (value: any) => {
+  return value && typeof value === 'object'
+}
+
+export const getPlaceholder = (value: any) => {
+  if (!isObject(value)) return null
+  const currentType = getTypeString(value)
+  if (currentType === DataType.ARRAY) {
+    return `Array [${value.length}]`
+  } else {
+    return `Object {${Object.keys(value).length}}`
+  }
+}

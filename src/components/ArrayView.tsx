@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { getPlaceholder, isObject } from '../common'
 import { ConfigContext } from '../store'
 import AddItem from './AddItem'
 import CollapsePart from './Collapse'
@@ -26,6 +27,7 @@ function ArrayView(props: Props) {
               <span className="jsonKey">
                 <span style={{ marginRight: '5px' }}>{index + 1}.</span>
               </span>
+              {isObject(item) && <b className="mt15">{getPlaceholder(item)}</b>}
               {!allowMap[uniqueKey] && (
                 <span className="jsonValue">
                   {props.getValue(

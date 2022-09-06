@@ -1,12 +1,18 @@
 import { Input, InputNumber, Select } from 'antd'
 import React, { useContext, useEffect, useState } from 'react'
-import { DataType, getQuoteAddress, getTypeString, typeMap } from '../common'
+import {
+  DataType,
+  getPlaceholder,
+  getQuoteAddress,
+  getTypeString,
+  typeMap,
+} from '../common'
 import AddItem from './AddItem'
 import { ConfigContext } from '../store'
-import { JsonEditorProps } from '../../dist'
 import ArrayView from './ArrayView'
 import ToolsView from './Tools'
 import CollapsePart from './Collapse'
+import { JsonEditorProps } from '..'
 
 function JsonView(props: JsonEditorProps) {
   const { editObject, setEditObject } = useContext(ConfigContext)
@@ -73,22 +79,18 @@ function JsonView(props: JsonEditorProps) {
     switch (thatType) {
       case 'array':
         return (
-          <span style={{ marginBottom: '10px' }}>
-            <b>Array[{fieldValue.length}]:</b>
-            <ArrayView
-              fieldValue={fieldValue}
-              fieldKey={fieldKey}
-              sourceData={sourceData}
-              deepLevel={deepLevel}
-              parentUniqueKey={parentUniqueKey}
-              getValue={getValue}
-            />
-          </span>
+          <ArrayView
+            fieldValue={fieldValue}
+            fieldKey={fieldKey}
+            sourceData={sourceData}
+            deepLevel={deepLevel}
+            parentUniqueKey={parentUniqueKey}
+            getValue={getValue}
+          />
         )
       case 'object':
         return (
-          <span style={{ marginBottom: '10px' }}>
-            <b>Object{`{${Object.keys(fieldValue).length}}`}:</b>
+          <span>
             {renderJsonConfig(fieldValue, deepLevel + 1, parentUniqueKey)}
           </span>
         )
@@ -141,6 +143,7 @@ function JsonView(props: JsonEditorProps) {
     allowMap[uniqueKey] = !allowMap[uniqueKey]
     setAllowMap({ ...allowMap })
   }
+
   const renderJsonConfig = (
     sourceData: any,
     deepLevel: number = 1,
@@ -164,11 +167,9 @@ function JsonView(props: JsonEditorProps) {
           {keyList.map((fieldKey, index) => {
             const uniqueKey = `${parentUniqueKey}-${index}`
             const fieldValue = sourceData[fieldKey]
-
             return (
               <div key={uniqueKey} className="indexLine">
                 <CollapsePart uniqueKey={uniqueKey} fieldValue={fieldValue} />
-                <span>{uniqueKey}uniqueKey</span>
                 <span className="jsonKey">
                   <Input
                     size="small"
@@ -178,6 +179,7 @@ function JsonView(props: JsonEditorProps) {
                     onChange={event => onChangeKey(event, fieldKey, sourceData)}
                   />
                 </span>
+                <b>{getPlaceholder(fieldValue)}</b>
                 {!allowMap[uniqueKey] && (
                   <span className="jsonValue">
                     {getValue(

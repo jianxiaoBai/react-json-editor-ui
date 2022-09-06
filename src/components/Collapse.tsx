@@ -1,5 +1,6 @@
 import { CaretDownOutlined } from '@ant-design/icons'
 import React, { useContext } from 'react'
+import { isObject } from '../common'
 import { ConfigContext } from '../store'
 
 type Props = {
@@ -10,8 +11,7 @@ type Props = {
 function CollapsePart(props: Props) {
   const { fieldValue, uniqueKey } = props
   const { onChangeAllow, allowMap } = useContext(ConfigContext)
-  const isObject = fieldValue && typeof fieldValue === 'object'
-  if (!isObject) return <span></span>
+  if (!isObject(fieldValue)) return <span></span>
   return (
     <span
       style={{ marginRight: '5px' }}
