@@ -1,56 +1,66 @@
-import 'react-app-polyfill/ie11';
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import JsonEditor from '../.';
-// import './reset.css';
+import 'react-app-polyfill/ie11'
+import 'react-json-syntax-highlighter/dist/ReactJsonSyntaxHighlighter.css'
+
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
+import ReactJsonSyntaxHighlighter from 'react-json-syntax-highlighter'
+
+import JsonEditor from '../'
+
 const App = () => {
   const [editObject, setEditObject] = React.useState<any>({
-    field: 'assignee',
-    list: [1, 2, 3],
-    from: {
-      name: 'zhangsan',
-      type: 'crazy person',
+    name: 'may',
+    age: null,
+    address: [
+      'Panyu Shiqiao on Canton',
+      'Tianhe',
+      {
+        city: 'forida meta 11',
+      },
+    ],
+    ohters: {
+      id: 1246,
+      joinTime: '2017-08-20. 10:20',
+      description: 'another',
     },
-    tmpFromAccountId: null,
-  });
+  })
 
   return (
-    <div style={{ padding: '10px' }}>
+    <div>
+      <h1 style={{ textAlign: 'center', padding: '50px 0' }}>
+        React Json Edit
+      </h1>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <div
           style={{
             width: '550px',
-            border: '1px solid black',
             padding: '10px',
+            marginRight: '2px',
+            backgroundColor: '#fcfcfc',
+            borderRadius: '2px',
           }}
         >
           <JsonEditor
             data={editObject}
             onChange={data => {
-              setEditObject(data);
+              setEditObject(data)
             }}
           />
         </div>
         <div
           style={{
-            width: '600px',
-            border: '1px solid black',
+            width: '550px',
             padding: '10px',
+            marginLeft: '2px',
+            backgroundColor: '#F5F5F5',
+            borderRadius: '2px',
           }}
         >
-          <pre>{JSON.stringify(editObject, null, 2)}</pre>
+          <ReactJsonSyntaxHighlighter obj={editObject} />
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-ReactDOM.render(<App />, document.getElementById('root'));
-// const root = ReactDOM.createRoot(
-//   document.getElementById('root') as HTMLElement
-// );
-// root.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>
-// );
+ReactDOM.render(<App />, document.getElementById('root'))
