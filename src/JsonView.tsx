@@ -212,7 +212,7 @@ function JsonView(props: JsonEditorProps) {
         onClickDelete,
       }}
     >
-      <div>{renderJsonConfig(editObject)}</div>
+      <div className="container">{renderJsonConfig(editObject)}</div>
     </ConfigContext.Provider>
   )
 }

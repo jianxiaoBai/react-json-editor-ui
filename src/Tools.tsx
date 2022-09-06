@@ -15,6 +15,7 @@ function ToolsView(props: {
         <span className="tools">
           <span>
             <Select
+              size="small"
               style={{ width: '100px' }}
               onChange={value => onChangeType(value, props.fieldValue)}
               defaultValue={getTypeString(props.fieldValue)}
