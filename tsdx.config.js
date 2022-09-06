@@ -5,10 +5,7 @@ module.exports = {
     config.plugins.push(
       postcss({
         inject: true,
-        less: true,
         extract: !!options.writeMeta,
-        modules: true, // 使用css modules
-        camelCase: true, // 支持驼峰
       })
     );
     return config;

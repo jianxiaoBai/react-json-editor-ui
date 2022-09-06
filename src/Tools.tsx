@@ -3,7 +3,7 @@ import { Select } from 'antd';
 import React from 'react';
 import { ConfigContext } from './store';
 import { getTypeString, typeList } from './util';
-import Aaa from './assets/styles/index.less';
+
 function ToolsView(props: {
   fieldValue: any;
   fieldKey: string;
@@ -12,7 +12,7 @@ function ToolsView(props: {
   return (
     <ConfigContext.Consumer>
       {({ onChangeType, onClickDelete }) => (
-        <span className={Aaa.tools}>
+        <span className="tools">
           <span>
             <Select
               style={{ width: '100px' }}
@@ -26,7 +26,7 @@ function ToolsView(props: {
               ))}
             </Select>
           </span>
-          <span className={Aaa.iconSubtraction}>
+          <span className="iconSubtraction">
             <MinusSquareOutlined
               style={{ color: '#E74C3C' }}
               onClick={() => onClickDelete(props.fieldKey, props.sourceData)}

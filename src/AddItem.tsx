@@ -5,7 +5,7 @@ import React from 'react';
 import { useContext, useState } from 'react';
 import { ConfigContext } from './store';
 import { typeList, typeMap } from './util';
-import Aaa from './assets/styles/index.less';
+
 const AddItem = (props: {
   uniqueKey: string;
   sourceData: any;
@@ -52,7 +52,7 @@ const AddItem = (props: {
     onClickIncrease(uniqueKey, false);
   };
   return (
-    <div className={Aaa.addItem} key={uniqueKey}>
+    <div className="addItem" key={uniqueKey}>
       {showIncreaseMap[uniqueKey] ? (
         <Space>
           {!isArray && (

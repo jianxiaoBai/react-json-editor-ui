@@ -6,7 +6,7 @@ import { ConfigContext } from './store';
 import { JsonEditorProps } from '.';
 import ArrayView from './ArrayView';
 import ToolsView from './Tools';
-import Aaa from './assets/styles/index.less';
+
 function JsonView(props: JsonEditorProps) {
   const { editObject, setEditObject } = useContext(ConfigContext);
 
@@ -154,14 +154,14 @@ function JsonView(props: JsonEditorProps) {
       );
     }
     return (
-      <div className={Aaa.blockContent}>
+      <div className="blockContent">
         <div style={{ marginTop: '10px' }}>
           {keyList.map((fieldKey, index) => {
             const uniqueKey = `${deepLevelJoin}-${index}`;
             const fieldValue = sourceData[fieldKey];
             return (
-              <div key={uniqueKey} className={Aaa.indexLine}>
-                <span className={Aaa.jsonKey}>
+              <div key={uniqueKey} className="indexLine">
+                <span className="jsonKey">
                   <Input
                     style={{ width: '100px' }}
                     placeholder={fieldKey}
@@ -169,7 +169,7 @@ function JsonView(props: JsonEditorProps) {
                     onChange={event => onChangeKey(event, fieldKey, sourceData)}
                   />
                 </span>
-                <span className={Aaa.jsonValue}>
+                <span className="jsonValue">
                   {getValue(
                     fieldValue,
                     fieldKey,
@@ -178,7 +178,7 @@ function JsonView(props: JsonEditorProps) {
                     deepLevelJoin
                   )}
                 </span>
-                <span className={Aaa.toolsView}>
+                <span className="toolsView">
                   {
                     <ToolsView
                       fieldValue={fieldValue}
