@@ -1,5 +1,5 @@
 import 'antd/dist/antd.min.css'
-import './assets/styles/index.less'
+import './styles/index.less'
 import React, { useEffect, useState } from 'react'
 import { ConfigContext } from './store'
 import cloneDeep from 'lodash.clonedeep'
