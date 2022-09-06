@@ -33,4 +33,15 @@
   .indexLine>span>.blockContent {
     margin-top: 15px;
   }
+  .collapse {
+    position: relative;
+    &.down {
+      transition: transform .2s ease;
+      transform: rotate(270deg);
+    }
+    &.up {
+      transition: transform .2s ease;
+      transform: rotate(360deg);
+    }
+  }
 }

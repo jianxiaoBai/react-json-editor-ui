@@ -71,7 +71,7 @@ const AddItem = (props: {
               onChange={value => onChangeTempType(uniqueKey, value)}
               defaultValue={DataType.STRING}
             >
-              {Object.keys(DataType).map(item => (
+              {Object.values(DataType).map(item => (
                 <Select.Option
                   value={item}
                   key={item}

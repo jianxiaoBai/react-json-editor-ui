@@ -1,28 +1,41 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ConfigContext } from '../store'
 import AddItem from './AddItem'
+import CollapsePart from './Collapse'
 import ToolsView from './Tools'
-function ArrayView(props: {
+
+type Props = {
   fieldValue: any[]
   fieldKey: string
   sourceData: any
   getValue: any
   deepLevel: number
-  deepLevelJoin: string
-}) {
+  parentUniqueKey: string
+}
+
+function ArrayView(props: Props) {
+  const { allowMap } = useContext(ConfigContext)
   return (
     <div className="blockContent">
       <div style={{ marginTop: '10px' }}>
         {props.fieldValue.map((item: any, index: number) => {
-          const uniqueKey = `${props.deepLevelJoin}-${index}`
+          const uniqueKey = `${props.parentUniqueKey}-${index}`
           return (
             <div className="indexLine" key={uniqueKey}>
-              <span style={{ marginRight: '5px' }}>{index + 1}.</span>
-              {props.getValue(
-                item,
-                index,
-                props.fieldValue,
-                props.deepLevel + 1,
-                uniqueKey
+              <CollapsePart uniqueKey={uniqueKey} fieldValue={item} />
+              <span className="jsonKey">
+                <span style={{ marginRight: '5px' }}>{index + 1}.</span>
+              </span>
+              {!allowMap[uniqueKey] && (
+                <span className="jsonValue">
+                  {props.getValue(
+                    item,
+                    index,
+                    props.fieldValue,
+                    props.deepLevel + 1,
+                    uniqueKey
+                  )}
+                </span>
               )}
               {
                 <ToolsView
@@ -37,8 +50,8 @@ function ArrayView(props: {
       </div>
       <div>
         <AddItem
-          key={props.deepLevelJoin}
-          uniqueKey={props.deepLevelJoin}
+          key={props.parentUniqueKey}
+          uniqueKey={props.parentUniqueKey}
           deepLevel={props.deepLevel}
           sourceData={props.fieldValue}
         />
