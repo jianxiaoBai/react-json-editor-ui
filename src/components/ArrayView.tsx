@@ -23,10 +23,10 @@ function ArrayView(props: Props) {
           const uniqueKey = `${props.parentUniqueKey}-${index}`
           return (
             <div className="indexLine" key={uniqueKey}>
-              <CollapsePart uniqueKey={uniqueKey} fieldValue={item} />
               <span className="jsonKey">
                 <span style={{ marginRight: '5px' }}>{index + 1}.</span>
               </span>
+              <CollapsePart uniqueKey={uniqueKey} fieldValue={item} />
               {isObject(item) && <b className="mt15">{getPlaceholder(item)}</b>}
               {!allowMap[uniqueKey] && (
                 <span className="jsonValue">
