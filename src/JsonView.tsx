@@ -93,6 +93,7 @@ function JsonView(props: JsonEditorProps) {
       case 'string':
         return (
           <Input
+            size="small"
             style={{ width: '100px' }}
             placeholder={fieldValue}
             value={fieldValue}
@@ -105,6 +106,7 @@ function JsonView(props: JsonEditorProps) {
       case 'number':
         return (
           <InputNumber
+            size="small"
             style={{ width: '100px' }}
             placeholder={fieldValue}
             value={fieldValue}
@@ -116,6 +118,7 @@ function JsonView(props: JsonEditorProps) {
       case 'boolean':
         return (
           <Select
+            size="small"
             style={{ width: '100px' }}
             defaultValue={true}
             onChange={(value: boolean) => {
@@ -159,6 +162,7 @@ function JsonView(props: JsonEditorProps) {
               <div key={uniqueKey} className="indexLine">
                 <span className="jsonKey">
                   <Input
+                    size="small"
                     style={{ width: '100px' }}
                     placeholder={fieldKey}
                     value={fieldKey}

@@ -58,6 +58,7 @@ const AddItem = (props: {
           {!isArray && (
             <div>
               <Input
+                size="small"
                 style={{ width: '100px' }}
                 onChange={event => changeInputKey(uniqueKey, event)}
               ></Input>
@@ -65,6 +66,7 @@ const AddItem = (props: {
           )}
           <div>
             <Select
+              size="small"
               style={{ width: '100px' }}
               onChange={value => onChangeTempType(uniqueKey, value)}
               defaultValue={'string'}
@@ -83,6 +85,7 @@ const AddItem = (props: {
           {!['object', 'array'].includes(templateData[uniqueKey]['type']) && (
             <div>
               <Input
+                size="small"
                 style={{ width: '100px' }}
                 onChange={event => changeInputValue(uniqueKey, event)}
               ></Input>
