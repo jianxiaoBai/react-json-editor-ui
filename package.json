@@ -35,14 +35,14 @@
   },
   "name": "react-json-editor-ui",
   "author": "baixiaojian",
-  "module": "dist/react-json-edit.esm.js",
+  "module": "dist/react-json-editor-ui.esm.js",
   "size-limit": [
     {
-      "path": "dist/react-json-edit.cjs.production.min.js",
+      "path": "dist/react-json-editor-ui.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/react-json-edit.esm.js",
+      "path": "dist/react-json-editor-ui.esm.js",
       "limit": "10 KB"
     }
   ],
