@@ -77,7 +77,7 @@ function JsonView(props: JsonEditorProps) {
   ) => {
     const thatType = getTypeString(fieldValue)
     switch (thatType) {
-      case 'array':
+      case DataType.ARRAY:
         return (
           <ArrayView
             fieldValue={fieldValue}
@@ -88,13 +88,13 @@ function JsonView(props: JsonEditorProps) {
             getValue={getValue}
           />
         )
-      case 'object':
+      case DataType.OBJECT:
         return (
           <span>
             {renderJsonConfig(fieldValue, deepLevel + 1, parentUniqueKey)}
           </span>
         )
-      case 'string':
+      case DataType.STRING:
         return (
           <Input
             size="small"
@@ -106,7 +106,7 @@ function JsonView(props: JsonEditorProps) {
             }
           />
         )
-      case 'number':
+      case DataType.NUMBER:
         return (
           <InputNumber
             size="small"
@@ -118,7 +118,7 @@ function JsonView(props: JsonEditorProps) {
             }}
           />
         )
-      case 'boolean':
+      case DataType.BOOLEAN:
         return (
           <Select
             size="small"
