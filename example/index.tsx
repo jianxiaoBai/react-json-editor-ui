@@ -27,9 +27,9 @@ const App = () => {
 
   return (
     <div>
-      {/* <h1 style={{ textAlign: 'center', padding: '50px 0' }}>
+      <h1 style={{ textAlign: 'center', padding: '50px 0' }}>
         React Json Edit
-      </h1> */}
+      </h1>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <div
           style={{
@@ -46,9 +46,13 @@ const App = () => {
               setEditObject(data)
             }}
             optionsMap={{
-              text: [
-                { value: 'light', label: 'Light' },
-                { value: 'bamboo', label: 'Bamboo' },
+              color: [
+                { value: 'red', label: 'Red' },
+                { value: 'blue', label: 'Blue' },
+              ],
+              city: [
+                { value: 'beijing', label: 'Beijing' },
+                { value: 'shanghai', label: 'Shanghai' },
               ],
             }}
           />
