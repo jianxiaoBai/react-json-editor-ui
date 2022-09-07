@@ -2,15 +2,15 @@
 
 React-based visual json editor.
 
-# Getting Started
+## Getting Started
 
-## Install
+### Install
 
 ```
 npm i react-json-edit -S
 ```
 
-Example:
+### Example:
 
 ```jsx
 import * as React from 'react'
