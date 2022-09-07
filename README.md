@@ -1,6 +1,6 @@
 ## React Json Edit
 
-React-based visual json editor.
+> React-based visual json editor.
 
 ![](/images/example.png)
 ## Getting Started
