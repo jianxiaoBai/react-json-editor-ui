@@ -36,7 +36,7 @@ const App = () => {
             width: '550px',
             padding: '10px',
             marginRight: '2px',
-            backgroundColor: '#fcfcfc',
+            boxShadow: '0px 0px 10px #eee',
             borderRadius: '2px',
           }}
         >
@@ -52,7 +52,7 @@ const App = () => {
             width: '550px',
             padding: '10px',
             marginLeft: '2px',
-            backgroundColor: '#F5F5F5',
+            boxShadow: '0px 0px 10px #eee',
             borderRadius: '2px',
           }}
         >
