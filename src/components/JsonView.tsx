@@ -113,8 +113,8 @@ function JsonView(props: JsonEditorProps) {
             style={{ width: '100px' }}
             placeholder={fieldValue}
             value={fieldValue}
-            onChange={(value: number) => {
-              onChangeValue(value, fieldKey, sourceData)
+            onBlur={event => {
+              onChangeValue(+event.target.value, fieldKey, sourceData)
             }}
           />
         )
