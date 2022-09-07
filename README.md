@@ -7,7 +7,7 @@ React-based visual json editor.
 ### Install
 
 ```
-npm i react-json-edit -S
+npm i react-json-editor-ui -S
 ```
 
 ### Props
