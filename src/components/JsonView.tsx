@@ -101,6 +101,7 @@ function JsonView(props: JsonEditorProps) {
             style={{ width: 100 }}
             size="small"
             options={currentOptions}
+            value={fieldValue}
             onChange={(value: string) =>
               onChangeValue(value, fieldKey, sourceData)
             }
