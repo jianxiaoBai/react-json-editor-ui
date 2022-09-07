@@ -1,5 +1,5 @@
 import { PlusSquareOutlined } from '@ant-design/icons'
-import { Button, Col, Input, Select, Space } from 'antd'
+import { Button, Col, Input, InputNumber, Select, Space } from 'antd'
 import cloneDeep from 'lodash.clonedeep'
 import React from 'react'
 import { useContext, useState } from 'react'
@@ -30,8 +30,8 @@ const AddItem = (props: {
     templateData[uniqueKey]['key'] = event.target.value
     setTemplateData({ ...templateData })
   }
-  const changeInputValue = (uniqueKey: string, event: any) => {
-    templateData[uniqueKey]['value'] = event.target.value
+  const changeInputValue = (uniqueKey: string, value: any) => {
+    templateData[uniqueKey]['value'] = value
     setTemplateData({ ...templateData })
   }
   const onChangeTempType = (uniqueKey: string, type: DataType) => {
@@ -50,6 +50,46 @@ const AddItem = (props: {
     }
     setEditObject({ ...editObject })
     onClickIncrease(uniqueKey, false)
+  }
+  const getTypeTemplate = (type: DataType) => {
+    switch (type) {
+      case DataType.STRING:
+        return (
+          <Input
+            size="small"
+            style={{ width: '100px' }}
+            onChange={event => changeInputValue(uniqueKey, event.target.value)}
+          />
+        )
+      case DataType.NUMBER:
+        return (
+          <InputNumber
+            size="small"
+            style={{ width: '100px' }}
+            onChange={value => changeInputValue(uniqueKey, value)}
+          />
+        )
+      case DataType.BOOLEAN:
+        return (
+          <Select
+            size="small"
+            style={{ width: '100px' }}
+            defaultValue={true}
+            onChange={(value: boolean) => {
+              changeInputValue(uniqueKey, value)
+            }}
+          >
+            <Select.Option value={true} label="true">
+              true
+            </Select.Option>
+            <Select.Option value={false} label="false">
+              false
+            </Select.Option>
+          </Select>
+        )
+      default:
+        return null
+    }
   }
   return (
     <div className="addItem" key={uniqueKey}>
@@ -82,15 +122,7 @@ const AddItem = (props: {
               ))}
             </Select>
           </div>
-          {!['object', 'array'].includes(templateData[uniqueKey]['type']) && (
-            <div>
-              <Input
-                size="small"
-                style={{ width: '100px' }}
-                onChange={event => changeInputValue(uniqueKey, event)}
-              ></Input>
-            </div>
-          )}
+          {getTypeTemplate(templateData[uniqueKey]['type'] || DataType.STRING)}
           <div>
             <Space>
               <Button

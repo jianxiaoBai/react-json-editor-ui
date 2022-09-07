@@ -106,7 +106,6 @@ function JsonView(props: JsonEditorProps) {
             }
           />
         )
-      case 'null':
       case 'number':
         return (
           <InputNumber
