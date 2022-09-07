@@ -25,6 +25,7 @@ npm i react-json-editor-ui -S
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import JsonEditor from 'react-json-editor-ui'
+import 'react-json-editor-ui/dist/react-json-editor-ui.cjs.development.css'
 
 const App = () => {
   const [editObject, setEditObject] = React.useState<any>({
