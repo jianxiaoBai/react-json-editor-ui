@@ -6,6 +6,7 @@ import cloneDeep from 'lodash.clonedeep'
 import JsonView from './components/JsonView'
 
 export type JsonEditorProps = {
+  width?: number | string
   data: Record<string, any>
   optionsMap?: Record<
     string,

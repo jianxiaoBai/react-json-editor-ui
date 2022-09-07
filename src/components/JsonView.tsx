@@ -234,7 +234,9 @@ function JsonView(props: JsonEditorProps) {
         allowMap,
       }}
     >
-      <div className="container">{renderJsonConfig(editObject)}</div>
+      <div className="container" style={{ width: props.width ?? 500 }}>
+        {renderJsonConfig(editObject)}
+      </div>
     </ConfigContext.Provider>
   )
 }
