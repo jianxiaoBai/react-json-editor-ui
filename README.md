@@ -2,6 +2,7 @@
 
 React-based visual json editor.
 
+![](/images/example.png)
 ## Getting Started
 
 ### Install
