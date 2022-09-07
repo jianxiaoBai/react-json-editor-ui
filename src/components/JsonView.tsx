@@ -1,4 +1,4 @@
-import { Input, InputNumber, Select } from 'antd'
+import { AutoComplete, Input, InputNumber, Select } from 'antd'
 import React, { useContext, useEffect, useState } from 'react'
 import {
   DataType,
@@ -15,7 +15,7 @@ import CollapsePart from './Collapse'
 import { JsonEditorProps } from '..'
 
 function JsonView(props: JsonEditorProps) {
-  const { editObject, setEditObject } = useContext(ConfigContext)
+  const { editObject, setEditObject, optionsMap } = useContext(ConfigContext)
   const [allowMap, setAllowMap] = useState<Record<string, boolean>>({})
 
   useEffect(() => {
@@ -95,14 +95,19 @@ function JsonView(props: JsonEditorProps) {
           </span>
         )
       case DataType.STRING:
+        const currentOptions = optionsMap[fieldKey] ?? []
         return (
-          <Input
+          <AutoComplete
+            style={{ width: 100 }}
             size="small"
-            style={{ width: '100px' }}
-            placeholder={fieldValue}
-            value={fieldValue}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-              onChangeValue(event.target.value, fieldKey, sourceData)
+            options={currentOptions}
+            onChange={(value: string) =>
+              onChangeValue(value, fieldKey, sourceData)
+            }
+            filterOption={(inputValue, option) =>
+              `${option!.value}`
+                .toUpperCase()
+                .indexOf(inputValue.toUpperCase()) !== -1
             }
           />
         )
@@ -220,6 +225,8 @@ function JsonView(props: JsonEditorProps) {
       value={{
         editObject,
         setEditObject,
+        optionsMap,
+
         onChangeType,
         onClickDelete,
         onChangeAllow,

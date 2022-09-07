@@ -1,5 +1,13 @@
 import { PlusSquareOutlined } from '@ant-design/icons'
-import { Button, Col, Input, InputNumber, Select, Space } from 'antd'
+import {
+  AutoComplete,
+  Button,
+  Col,
+  Input,
+  InputNumber,
+  Select,
+  Space,
+} from 'antd'
 import cloneDeep from 'lodash.clonedeep'
 import React from 'react'
 import { useContext, useState } from 'react'
@@ -11,7 +19,7 @@ const AddItem = (props: {
   sourceData: any
   deepLevel: number
 }) => {
-  const { setEditObject, editObject } = useContext(ConfigContext)
+  const { setEditObject, editObject, optionsMap } = useContext(ConfigContext)
   const { uniqueKey, sourceData } = props
   const isArray = Array.isArray(sourceData)
   const [templateData, setTemplateData] = useState<any>({})
@@ -51,14 +59,23 @@ const AddItem = (props: {
     setEditObject({ ...editObject })
     onClickIncrease(uniqueKey, false)
   }
+
   const getTypeTemplate = (type: DataType) => {
     switch (type) {
       case DataType.STRING:
+        const currentOptions =
+          optionsMap[templateData[uniqueKey]?.['key']] ?? []
         return (
-          <Input
+          <AutoComplete
+            style={{ width: 100 }}
             size="small"
-            style={{ width: '100px' }}
-            onChange={event => changeInputValue(uniqueKey, event.target.value)}
+            options={currentOptions}
+            onChange={value => changeInputValue(uniqueKey, value)}
+            filterOption={(inputValue, option) =>
+              `${option!.value}`
+                .toUpperCase()
+                .indexOf(inputValue.toUpperCase()) !== -1
+            }
           />
         )
       case DataType.NUMBER:

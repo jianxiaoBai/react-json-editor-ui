@@ -45,6 +45,12 @@ const App = () => {
             onChange={data => {
               setEditObject(data)
             }}
+            optionsMap={{
+              text: [
+                { value: 'light', label: 'Light' },
+                { value: 'bamboo', label: 'Bamboo' },
+              ],
+            }}
           />
         </div>
         <div

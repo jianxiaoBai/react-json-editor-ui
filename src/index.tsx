@@ -7,11 +7,19 @@ import JsonView from './components/JsonView'
 
 export type JsonEditorProps = {
   data: Record<string, any>
+  optionsMap?: Record<
+    string,
+    Array<{
+      value: string
+      label?: string
+    }>
+  >
   onChange: (data: any) => void
 }
 
 function JsonEditor(props: JsonEditorProps) {
   const [editObject, setEditObject] = useState<any>(cloneDeep(props.data))
+  const [optionsMap] = useState<any>(cloneDeep(props.optionsMap))
   useEffect(() => {
     props.onChange(editObject)
   }, [editObject])
@@ -21,6 +29,7 @@ function JsonEditor(props: JsonEditorProps) {
       value={{
         editObject,
         setEditObject,
+        optionsMap,
       }}
     >
       <JsonView {...props}></JsonView>
