@@ -1,4 +1,4 @@
-# React Json Edit
+## React Json Edit
 
 React-based visual json editor.
 
@@ -9,6 +9,14 @@ React-based visual json editor.
 ```
 npm i react-json-edit -S
 ```
+
+### Props
+
+|key|description|
+|--|--|
+|data|The editor uses data|
+|onChange|Callback the data|
+|optionsMap|When a match for auto-complete on the input value|
 
 ### Example:
 
