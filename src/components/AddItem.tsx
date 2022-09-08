@@ -64,7 +64,7 @@ const AddItem = (props: {
     switch (type) {
       case DataType.STRING:
         const currentOptions =
-          optionsMap[templateData[uniqueKey]?.['key']] ?? []
+          optionsMap?.[templateData[uniqueKey]?.['key']] ?? []
         return (
           <AutoComplete
             style={{ width: 100 }}

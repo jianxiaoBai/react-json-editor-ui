@@ -13,11 +13,12 @@ npm i react-json-editor-ui -S
 
 ### Props
 
-|key|description|
-|--|--|
-|data|The editor uses data|
-|onChange|Callback the data|
-|optionsMap|When a match for auto-complete on the input value|
+| key        | description                                       | required | default |
+| ---------- | ------------------------------------------------- | -------- | ------- |
+| width      | The container width                               | false    | 500     |
+| data       | The editor uses data                              | true     | null    |
+| onChange   | Callback the data                                 | true     | null    |
+| optionsMap | When a match for auto-complete on the input value | false    | null    |
 
 ### Example:
 

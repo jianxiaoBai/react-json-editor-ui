@@ -95,7 +95,7 @@ function JsonView(props: JsonEditorProps) {
           </span>
         )
       case DataType.STRING:
-        const currentOptions = optionsMap[fieldKey] ?? []
+        const currentOptions = optionsMap?.[fieldKey] ?? []
         return (
           <AutoComplete
             style={{ width: 100 }}
