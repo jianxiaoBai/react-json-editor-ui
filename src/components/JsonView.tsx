@@ -1,5 +1,5 @@
 import { AutoComplete, Input, InputNumber, Select } from 'antd'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
   DataType,
   getPlaceholder,
@@ -12,15 +12,22 @@ import { ConfigContext } from '../store'
 import ArrayView from './ArrayView'
 import ToolsView from './Tools'
 import CollapsePart from './Collapse'
-import { JsonEditorProps } from '..'
 
-function JsonView(props: JsonEditorProps) {
-  const { editObject, setEditObject, optionsMap } = useContext(ConfigContext)
+export type JsonViewProps = {
+  setEditObject: any
+  editObject: Record<string, any>
+  optionsMap?: Record<
+    string,
+    Array<{
+      value: string
+      label?: string
+    }>
+  >
+}
+
+function JsonView(props: JsonViewProps) {
+  const { editObject, setEditObject, optionsMap } = props
   const [allowMap, setAllowMap] = useState<Record<string, boolean>>({})
-
-  useEffect(() => {
-    props.onChange(editObject)
-  }, [editObject])
 
   const syncData = (data: Record<string, any>) => {
     setEditObject({ ...data })
@@ -148,10 +155,10 @@ function JsonView(props: JsonEditorProps) {
     allowMap[uniqueKey] = !allowMap[uniqueKey]
     setAllowMap({ ...allowMap })
   }
-
+  const defaultLevel = 1
   const renderJsonConfig = (
     sourceData: any,
-    deepLevel: number = 1,
+    deepLevel: number = defaultLevel,
     parentUniqueKey: string = `${deepLevel}`
   ) => {
     const keyList = Object.keys(sourceData)
@@ -167,7 +174,10 @@ function JsonView(props: JsonEditorProps) {
       )
     }
     return (
-      <div className="blockContent">
+      <div
+        className="objectContent"
+        style={{ marginLeft: defaultLevel === deepLevel ? '0' : '20px' }}
+      >
         <div style={{ marginTop: '10px' }}>
           {keyList.map((fieldKey, index) => {
             const uniqueKey = `${parentUniqueKey}-${index}`
@@ -234,9 +244,7 @@ function JsonView(props: JsonEditorProps) {
         allowMap,
       }}
     >
-      <div className="container" style={{ width: props.width ?? 500 }}>
-        {renderJsonConfig(editObject)}
-      </div>
+      {renderJsonConfig(editObject)}
     </ConfigContext.Provider>
   )
 }

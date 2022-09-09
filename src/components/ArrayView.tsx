@@ -17,7 +17,7 @@ type Props = {
 function ArrayView(props: Props) {
   const { allowMap } = useContext(ConfigContext)
   return (
-    <div className="blockContent">
+    <div className="arrayContent">
       <div style={{ marginTop: '10px' }}>
         {props.fieldValue.map((item: any, index: number) => {
           const uniqueKey = `${props.parentUniqueKey}-${index}`
