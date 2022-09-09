@@ -38,6 +38,7 @@ const App = () => {
             marginRight: '2px',
             boxShadow: '0px 0px 10px #eee',
             borderRadius: '2px',
+            paddingLeft: '25px',
           }}
         >
           <JsonEditor
