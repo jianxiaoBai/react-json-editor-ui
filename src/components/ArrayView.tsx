@@ -27,7 +27,9 @@ function ArrayView(props: Props) {
                 <span style={{ marginRight: '5px' }}>{index + 1}.</span>
               </span>
               <CollapsePart uniqueKey={uniqueKey} fieldValue={item} />
-              {isObject(item) && <b className="mt15">{getPlaceholder(item)}</b>}
+              {isObject(item) ? (
+                <b className="mt15">{getPlaceholder(item)}</b>
+              ) : null}
               {!allowMap[uniqueKey] && (
                 <span className="jsonValue">
                   {props.getValue(
