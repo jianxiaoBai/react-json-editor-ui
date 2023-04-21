@@ -136,7 +136,7 @@ function JsonView(props: JsonViewProps) {
           <Select
             size="small"
             style={{ width: '100px' }}
-            defaultValue={true}
+            defaultValue={Boolean(fieldValue)}
             onChange={(value: boolean) => {
               onChangeValue(value, fieldKey, sourceData)
             }}
