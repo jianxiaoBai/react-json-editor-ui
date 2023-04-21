@@ -18,7 +18,7 @@ const App = () => {
         city: 'forida meta 11',
       },
     ],
-    ohters: {
+    others: {
       id: 1246,
       joinTime: '2017-08-20. 10:20',
       description: 'another',
