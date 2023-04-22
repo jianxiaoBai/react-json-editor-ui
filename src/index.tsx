@@ -31,7 +31,7 @@ function JsonEditor(props: JsonEditorProps) {
           editObject,
           setEditObject,
           optionsMap: props.optionsMap,
-          copy: props.copy
+          copy: props.copy,
         }}
       />
     </div>

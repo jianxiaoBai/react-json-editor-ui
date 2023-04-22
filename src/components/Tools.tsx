@@ -1,4 +1,4 @@
-import { MinusSquareOutlined,CopyOutlined } from '@ant-design/icons'
+import { MinusSquareOutlined, CopyOutlined } from '@ant-design/icons'
 import { Select } from 'antd'
 import React from 'react'
 import { ConfigContext } from '../store'
@@ -34,12 +34,12 @@ function ToolsView(props: {
             />
           </span>
           {copy && (
-              <span className="iconCopy">
-                <CopyOutlined
+            <span className="iconCopy">
+              <CopyOutlined
                 style={{ color: '#3078f6' }}
-                onClick={() => onClickCopy(props.fieldKey,props.fieldValue, props.sourceData)}
-                />
-              </span>
+                onClick={() => onClickCopy(props.fieldKey, props.fieldValue, props.sourceData)}
+              />
+            </span>
           )}
         </span>
       )}
