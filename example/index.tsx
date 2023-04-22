@@ -56,6 +56,7 @@ const App = () => {
                 { value: 'shanghai', label: 'Shanghai' },
               ],
             }}
+            copy
           />
         </div>
         <div
