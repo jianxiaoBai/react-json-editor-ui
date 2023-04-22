@@ -19,6 +19,7 @@ npm i react-json-editor-ui -S
 | data       | The editor uses data                              | true     | null    |
 | onChange   | Callback the data                                 | true     | null    |
 | optionsMap | When a match for auto-complete on the input value | false    | null    |
+| copy       | Whether to enable the replication function        | false    | false   |
 
 ### Example:
 
@@ -62,6 +63,7 @@ const App = () => {
           { value: 'shanghai', label: 'Shanghai' },
         ],
       }}
+      copy
     />
   )
 }
