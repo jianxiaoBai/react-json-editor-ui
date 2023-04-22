@@ -23,10 +23,11 @@ export type JsonViewProps = {
       label?: string
     }>
   >
+  copy?: boolean
 }
 
 function JsonView(props: JsonViewProps) {
-  const { editObject, setEditObject, optionsMap } = props
+  const { editObject, setEditObject, optionsMap, copy } = props
   const [allowMap, setAllowMap] = useState<Record<string, boolean>>({})
 
   const syncData = (data: Record<string, any>) => {
@@ -38,6 +39,15 @@ function JsonView(props: JsonViewProps) {
       sourceData.splice(+key, 1)
     } else {
       Reflect.deleteProperty(sourceData, key)
+    }
+    syncData(editObject)
+  }
+
+  const onClickCopy = (key: string, value: string, sourceData: any) => {
+    if (Array.isArray(sourceData)) {
+      sourceData.splice(+key, 0, value)
+    } else {
+      Reflect.set(sourceData, key + '副本', Reflect.get(sourceData, key))
     }
     syncData(editObject)
   }
@@ -237,9 +247,11 @@ function JsonView(props: JsonViewProps) {
         editObject,
         setEditObject,
         optionsMap,
+        copy,
 
         onChangeType,
         onClickDelete,
+        onClickCopy,
         onChangeAllow,
         allowMap,
       }}
