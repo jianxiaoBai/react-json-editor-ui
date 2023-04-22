@@ -14,6 +14,7 @@ export type JsonEditorProps = {
       label?: string
     }>
   >
+  copy?: boolean
   onChange: (data: any) => void
 }
 
@@ -30,6 +31,7 @@ function JsonEditor(props: JsonEditorProps) {
           editObject,
           setEditObject,
           optionsMap: props.optionsMap,
+          copy: props.copy
         }}
       />
     </div>
