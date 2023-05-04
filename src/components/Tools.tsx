@@ -1,4 +1,4 @@
-import { MinusSquareOutlined } from '@ant-design/icons'
+import { MinusSquareOutlined, CopyOutlined } from '@ant-design/icons'
 import { Select } from 'antd'
 import React from 'react'
 import { ConfigContext } from '../store'
@@ -11,7 +11,7 @@ function ToolsView(props: {
 }) {
   return (
     <ConfigContext.Consumer>
-      {({ onChangeType, onClickDelete }) => (
+      {({ onChangeType, onClickDelete, onClickCopy, copy }) => (
         <span className="tools">
           <span>
             <Select
@@ -33,6 +33,14 @@ function ToolsView(props: {
               onClick={() => onClickDelete(props.fieldKey, props.sourceData)}
             />
           </span>
+          {copy && (
+            <span className="iconCopy">
+              <CopyOutlined
+                style={props.fieldKey.includes('-') ? {visibility: 'hidden'} : {color: '#3078f6'}}
+                onClick={() => onClickCopy(props.fieldKey, props.fieldValue, props.sourceData)}
+              />
+            </span>
+          )}
         </span>
       )}
     </ConfigContext.Consumer>
