@@ -36,7 +36,7 @@ function ToolsView(props: {
           {copy && (
             <span className="iconCopy">
               <CopyOutlined
-                style={{ color: '#3078f6' }}
+                style={props.fieldKey.includes('-') ? {visibility: 'hidden'} : {color: '#3078f6'}}
                 onClick={() => onClickCopy(props.fieldKey, props.fieldValue, props.sourceData)}
               />
             </span>

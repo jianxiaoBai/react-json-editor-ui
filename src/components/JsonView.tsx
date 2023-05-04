@@ -12,6 +12,7 @@ import { ConfigContext } from '../store'
 import ArrayView from './ArrayView'
 import ToolsView from './Tools'
 import CollapsePart from './Collapse'
+import cloneDeep from 'lodash.clonedeep'
 
 export type JsonViewProps = {
   setEditObject: any
@@ -45,9 +46,14 @@ function JsonView(props: JsonViewProps) {
 
   const onClickCopy = (key: string, value: string, sourceData: any) => {
     if (Array.isArray(sourceData)) {
-      sourceData.splice(+key, 0, value)
+      sourceData.splice(+key + 1, 0, typeof value === 'object' ? cloneDeep(value) : value);
     } else {
-      Reflect.set(sourceData, key + '副本', Reflect.get(sourceData, key))
+      const keys = Object.keys(sourceData);
+      const filterEqual = keys.filter(i => i.includes(key + '-'));
+      const sp = filterEqual.at(-1)?.split('-');
+      const lastNumber = sp && sp.at(-1);
+      const index = +lastNumber! + 1 || 1;
+      Reflect.set(sourceData, `${key}-${index}`, cloneDeep(Reflect.get(sourceData, key)));
     }
     syncData(editObject)
   }
