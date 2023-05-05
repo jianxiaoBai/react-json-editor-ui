@@ -43,6 +43,7 @@ function ArrayView(props: Props) {
               )}
               {
                 <ToolsView
+                  uniqueKey={uniqueKey}
                   fieldValue={item}
                   fieldKey={`${index}`}
                   sourceData={props.fieldValue}

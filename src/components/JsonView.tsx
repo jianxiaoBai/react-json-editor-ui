@@ -42,15 +42,16 @@ function JsonView(props: JsonViewProps) {
     syncData(editObject)
   }
 
-  const onChangeType = (type: DataType, fieldValue: any) => {
-    const newEditObject = getQuoteAddress(fieldValue, typeMap[type], editObject)
+  const onChangeType = (type: DataType, uniqueKey: string) => {
+    const newEditObject = getQuoteAddress(typeMap[type], uniqueKey, editObject)
     syncData(newEditObject)
   }
 
   const onChangeKey = (
     event: React.ChangeEvent<HTMLInputElement>,
     currentKey: string,
-    source: Record<string, any>
+    uniqueKey: string,
+    source: Record<string, any>,
   ) => {
     const newValue: Record<string, any> = {}
     for (const key in source) {
@@ -62,7 +63,11 @@ function JsonView(props: JsonViewProps) {
         }
       }
     }
-    const newTotalData = getQuoteAddress(source, newValue, editObject)
+    const newTotalData = getQuoteAddress(
+      newValue,
+      uniqueKey,
+      editObject,
+    )
     syncData(newTotalData)
   }
 
@@ -191,7 +196,9 @@ function JsonView(props: JsonViewProps) {
                     style={{ width: '100px' }}
                     placeholder={fieldKey}
                     value={fieldKey}
-                    onChange={event => onChangeKey(event, fieldKey, sourceData)}
+                    onChange={event =>
+                      onChangeKey(event, fieldKey, uniqueKey, sourceData)
+                    }
                   />
                 </span>
                 <b>{getPlaceholder(fieldValue)}</b>
@@ -209,6 +216,7 @@ function JsonView(props: JsonViewProps) {
                 <span className="toolsView">
                   {
                     <ToolsView
+                      uniqueKey={uniqueKey}
                       fieldValue={fieldValue}
                       fieldKey={fieldKey}
                       sourceData={sourceData}

@@ -7,6 +7,7 @@ import { getTypeString, DataType } from '../common'
 function ToolsView(props: {
   fieldValue: any
   fieldKey: string
+  uniqueKey: string
   sourceData: any
 }) {
   return (
@@ -17,7 +18,7 @@ function ToolsView(props: {
             <Select
               size="small"
               style={{ width: '100px' }}
-              onChange={value => onChangeType(value, props.fieldValue)}
+              onChange={value => onChangeType(value, props.uniqueKey)}
               defaultValue={getTypeString(props.fieldValue)}
             >
               {Object.values(DataType).map(item => (

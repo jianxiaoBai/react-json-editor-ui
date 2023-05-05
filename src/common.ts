@@ -21,26 +21,29 @@ export const getTypeString = (element: any): string => {
     .toLowerCase() as string
 }
 
-export const getQuoteAddress = (
-  oldElement: any,
+const setNewValue: any = (
+  keys: string[],
+  obj: any,
   newElement: any,
-  currentData: {
-    [keyof: string]: any
-  }
 ) => {
-  if (oldElement === currentData) {
-    return newElement
+  const index: any = keys.shift()
+  const objKeys: string[] = Object.keys(obj)
+  if (keys.length) {
+    return setNewValue(keys, obj[objKeys[index]], newElement)
   }
-  for (const key in currentData) {
-    if (Object.prototype.hasOwnProperty.call(currentData, key)) {
-      const element = currentData[key]
-      if (oldElement === element) {
-        currentData[key] = newElement
-      } else if (typeof element === 'object' && element) {
-        getQuoteAddress(oldElement, newElement, element)
-      }
-    }
-  }
+  obj[objKeys[index]] = newElement
+}
+
+export const getQuoteAddress = (
+         newElement: any,
+         uniqueKey: string,
+         currentData: {
+           [keyof: string]: any
+         },
+) => {
+  // because first index is root index, don't find it.
+  const indexKeys = uniqueKey.split('-').slice(1)
+  setNewValue(indexKeys, currentData, newElement, currentData)
   return currentData
 }
 
