@@ -21,11 +21,7 @@ export const getTypeString = (element: any): string => {
     .toLowerCase() as string
 }
 
-const setNewValue: any = (
-  keys: string[],
-  obj: any,
-  newElement: any,
-) => {
+const setNewValue: any = (keys: string[], obj: any, newElement: any) => {
   const index: any = keys.shift()
   const objKeys: string[] = Object.keys(obj)
   if (keys.length) {
@@ -35,16 +31,19 @@ const setNewValue: any = (
 }
 
 export const getQuoteAddress = (
-         newElement: any,
-         uniqueKey: string,
-         currentData: {
-           [keyof: string]: any
-         },
+  newElement: any,
+  indexKeys: string[],
+  currentData: {
+    [keyof: string]: any
+  }
 ) => {
-  // because first index is root index, don't find it.
-  const indexKeys = uniqueKey.split('-').slice(1)
-  setNewValue(indexKeys, currentData, newElement, currentData)
+  setNewValue(indexKeys, currentData, newElement)
   return currentData
+}
+
+export const getKeyList = (uniqueKey: string) => {
+  // because first index is root index, don't find it.
+  return uniqueKey.split('-').slice(1)
 }
 
 export const isObject = (value: any) => {

@@ -2,6 +2,7 @@ import { AutoComplete, Input, InputNumber, Select } from 'antd'
 import React, { useState } from 'react'
 import {
   DataType,
+  getKeyList,
   getPlaceholder,
   getQuoteAddress,
   getTypeString,
@@ -43,7 +44,11 @@ function JsonView(props: JsonViewProps) {
   }
 
   const onChangeType = (type: DataType, uniqueKey: string) => {
-    const newEditObject = getQuoteAddress(typeMap[type], uniqueKey, editObject)
+    const newEditObject = getQuoteAddress(
+      typeMap[type],
+      getKeyList(uniqueKey),
+      editObject
+    )
     syncData(newEditObject)
   }
 
@@ -51,7 +56,7 @@ function JsonView(props: JsonViewProps) {
     event: React.ChangeEvent<HTMLInputElement>,
     currentKey: string,
     uniqueKey: string,
-    source: Record<string, any>,
+    source: Record<string, any>
   ) => {
     const newValue: Record<string, any> = {}
     for (const key in source) {
@@ -63,12 +68,17 @@ function JsonView(props: JsonViewProps) {
         }
       }
     }
-    const newTotalData = getQuoteAddress(
-      newValue,
-      uniqueKey,
-      editObject,
-    )
-    syncData(newTotalData)
+
+    const indexKeys = getKeyList(uniqueKey)
+    const ROOT_LEVEL = 1
+    if (indexKeys.length === ROOT_LEVEL) {
+      syncData(newValue)
+    } else {
+      // remove last key equals set parent value
+      indexKeys.pop()
+      const newTotalData = getQuoteAddress(newValue, indexKeys, editObject)
+      syncData(newTotalData)
+    }
   }
 
   const onChangeValue = (
