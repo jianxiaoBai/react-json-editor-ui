@@ -1,4 +1,3 @@
-import { PlusSquareOutlined } from '@ant-design/icons'
 import {
   AutoComplete,
   Button,
@@ -7,8 +6,9 @@ import {
   InputNumber,
   Select,
   Space,
-} from 'antd'
-import cloneDeep from 'lodash.clonedeep'
+  Icons
+} from '../ui'
+const { PlusSquareOutlined } = Icons
 import React from 'react'
 import { useContext, useState } from 'react'
 import { ConfigContext } from '../store'
@@ -50,7 +50,7 @@ const AddItem = (props: {
     })
   }
   const onConfirmIncrease = (uniqueKey: any, sourceData: any) => {
-    const { key: aKey, value } = cloneDeep(templateData[uniqueKey])
+    const { key: aKey, value } = JSON.parse(JSON.stringify((templateData[uniqueKey])))
     if (isArray) {
       sourceData.push(value)
     } else {

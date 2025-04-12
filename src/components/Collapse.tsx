@@ -1,7 +1,8 @@
-import { CaretDownOutlined } from '@ant-design/icons'
 import React, { useContext } from 'react'
 import { isObject } from '../common'
 import { ConfigContext } from '../store'
+import { Icons } from '../ui'
+const { CaretDownOutlined } = Icons
 
 type Props = {
   uniqueKey: string

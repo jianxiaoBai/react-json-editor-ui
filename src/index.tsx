@@ -1,7 +1,6 @@
-import 'antd/dist/antd.min.css'
 import './styles/index.less'
+import './ui/styles.css'
 import React, { useEffect, useState } from 'react'
-import cloneDeep from 'lodash.clonedeep'
 import JsonView from './components/JsonView'
 
 export type JsonEditorProps = {
@@ -18,7 +17,7 @@ export type JsonEditorProps = {
 }
 
 function JsonEditor(props: JsonEditorProps) {
-  const [editObject, setEditObject] = useState<any>(cloneDeep(props.data))
+  const [editObject, setEditObject] = useState<any>(JSON.parse(JSON.stringify(props.data)))
   useEffect(() => {
     props.onChange(editObject)
   }, [editObject])

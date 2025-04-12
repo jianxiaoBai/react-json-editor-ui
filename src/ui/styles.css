@@ -1,0 +1,237 @@
+/* 基础样式 */
+:root {
+  --primary-color: #1890ff;
+  --border-color: #d9d9d9;
+  --text-color: rgba(0, 0, 0, 0.85);
+  --background-color: #fff;
+  --hover-color: #40a9ff;
+  --disabled-color: rgba(0, 0, 0, 0.25);
+  --disabled-bg: #f5f5f5;
+  --border-radius: 2px;
+  --transition-duration: 0.3s;
+  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* 输入框样式 */
+.ui-input {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 4px 11px;
+  color: var(--text-color);
+  font-size: 14px;
+  line-height: 1.5715;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  transition: all var(--transition-duration);
+}
+
+.ui-input:hover {
+  border-color: var(--hover-color);
+}
+
+.ui-input:focus {
+  border-color: var(--hover-color);
+  outline: 0;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+.ui-input-sm {
+  height: 24px;
+  padding: 0px 7px;
+  font-size: 12px;
+}
+
+.ui-input-default {
+  height: 32px;
+}
+
+.ui-input-lg {
+  height: 40px;
+  padding: 6px 11px;
+  font-size: 16px;
+}
+
+/* 数字输入框样式 */
+.ui-input-number {
+  padding-right: 5px;
+}
+
+/* 选择器样式 */
+.ui-select {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 4px 11px;
+  color: var(--text-color);
+  font-size: 14px;
+  line-height: 1.5715;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  transition: all var(--transition-duration);
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 16px;
+  padding-right: 28px;
+}
+
+.ui-select:hover {
+  border-color: var(--hover-color);
+}
+
+.ui-select:focus {
+  border-color: var(--hover-color);
+  outline: 0;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+.ui-select-sm {
+  height: 24px;
+  padding: 0px 7px;
+  font-size: 12px;
+  padding-right: 24px;
+  background-size: 14px;
+}
+
+.ui-select-default {
+  height: 32px;
+}
+
+.ui-select-lg {
+  height: 40px;
+  padding: 6px 11px;
+  font-size: 16px;
+  padding-right: 32px;
+  background-size: 18px;
+}
+
+/* 自动完成组件样式 */
+.ui-autocomplete-container {
+  position: relative;
+  display: inline-block;
+}
+
+.ui-autocomplete-input {
+  width: 100%;
+}
+
+.ui-autocomplete-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1050;
+  width: 100%;
+  max-height: 256px;
+  margin-top: 4px;
+  overflow-y: auto;
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.ui-autocomplete-option {
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: background var(--transition-duration);
+}
+
+.ui-autocomplete-option:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+/* 按钮样式 */
+.ui-button {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 4px 15px;
+  color: var(--text-color);
+  font-size: 14px;
+  line-height: 1.5715;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all var(--transition-duration);
+}
+
+.ui-button:hover {
+  color: var(--hover-color);
+  border-color: var(--hover-color);
+}
+
+.ui-button-sm {
+  height: 24px;
+  padding: 0px 7px;
+  font-size: 12px;
+}
+
+.ui-button-default {
+  height: 32px;
+}
+
+.ui-button-lg {
+  height: 40px;
+  padding: 6px 15px;
+  font-size: 16px;
+}
+
+/* 空间组件样式 */
+.ui-space {
+  display: inline-flex;
+  align-items: center;
+}
+
+.ui-space-item {
+  margin-right: 8px;
+}
+
+.ui-space-item:last-child {
+  margin-right: 0;
+}
+
+/* 列组件样式 */
+.ui-col {
+  display: block;
+}
+
+/* 图标样式 */
+.ui-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  font-style: normal;
+  line-height: 0;
+  text-align: center;
+  text-transform: none;
+  vertical-align: -0.125em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer;
+}
+
+.ui-icon svg {
+  display: inline-block;
+}
+
+.ui-icon-plus-square {
+  color: var(--primary-color);
+}
+
+.ui-icon-minus-square {
+  color: #E74C3C;
+}
+
+.ui-icon-caret-down {
+  transition: transform .2s ease;
+}
+
+.ui-icon-caret-down.down {
+  transform: rotate(270deg);
+}
+
+.ui-icon-caret-down.up {
+  transform: rotate(360deg);
+}
