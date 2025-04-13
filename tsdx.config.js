@@ -5,7 +5,11 @@ module.exports = {
     config.plugins.push(
       postcss({
         inject: true,
-        extract: !!options.writeMeta,
+        extract: false,
+        modules: {
+          auto: true,
+          generateScopedName: '[name]__[local]__[hash:base64:5]'
+        }
       })
     );
     return config;
