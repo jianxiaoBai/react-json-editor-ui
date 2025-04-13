@@ -83,7 +83,9 @@ const AddItem = (props: {
           <InputNumber
             size="small"
             style={{ width: '100px' }}
-            onBlur={event => changeInputValue(uniqueKey, +event.target.value)}
+             onChange={value => {
+              changeInputValue(uniqueKey, +value)
+            }}
           />
         )
       case DataType.BOOLEAN:

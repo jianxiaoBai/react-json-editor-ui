@@ -37,17 +37,25 @@ export const InputNumber = ({
   style = {},
   placeholder,
   value,
-  onBlur,
+  onChange,
   ...props
 }: {
   size?: 'small' | 'default' | 'large'
   style?: React.CSSProperties
   placeholder?: any
   value?: number
-  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void
+  onChange?: (value: number) => void
   [key: string]: any
 }) => {
   const sizeClass = size === 'small' ? 'ui-input-sm' : size === 'large' ? 'ui-input-lg' : 'ui-input-default'
+  
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (onChange) {
+      // 将输入值转换为数字类型
+      const numValue = e.target.value === '' ? undefined : Number(e.target.value);
+      onChange(numValue as number);
+    }
+  };
   
   return (
     <input
@@ -56,7 +64,7 @@ export const InputNumber = ({
       style={style}
       placeholder={String(placeholder)}
       value={value}
-      onBlur={onBlur}
+      onChange={handleChange}
       {...props}
     />
   )

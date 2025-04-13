@@ -5,26 +5,28 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import ReactJsonSyntaxHighlighter from 'react-json-syntax-highlighter'
 
-import JsonEditor from '../'
+import JsonEditor, { JsonEditorRef } from '../'
 
 const App = () => {
+  const editorRef = React.useRef<JsonEditorRef>(null)
+  // editorRef.current.updateData(newData)
   const [editObject, setEditObject] = React.useState<any>({
-    name: 'may',
-    age: null,
-    address: [
-      'Panyu Shiqiao on Canton',
-      'Tianhe',
-      {
-        city: 'forida meta 11',
-      },
-    ],
-    others: {
-      id: 1246,
-      joinTime: '2017-08-20. 10:20',
-      description: 'another',
-    },
+        name: 'may',
+        age: null,
+        address: [
+          'Panyu Shiqiao on Canton',
+          'Tianhe',
+          {
+            city: 'forida meta 11',
+          },
+        ],
+        others: {
+          id: 1246,
+          joinTime: '2017-08-20. 10:20',
+          description: 'another',
+        },
   })
-
+  
   return (
     <div>
       <h1 style={{ textAlign: 'center', padding: '50px 0' }}>
@@ -42,6 +44,7 @@ const App = () => {
           }}
         >
           <JsonEditor
+            ref={editorRef}
             data={editObject}
             onChange={data => {
               setEditObject(data)

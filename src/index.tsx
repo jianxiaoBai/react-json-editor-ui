@@ -1,6 +1,6 @@
 import './styles/index.less'
 import './ui/styles.css'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, forwardRef, useImperativeHandle } from 'react'
 import JsonView from './components/JsonView'
 
 export type JsonEditorProps = {
@@ -16,11 +16,22 @@ export type JsonEditorProps = {
   onChange: (data: any) => void
 }
 
-function JsonEditor(props: JsonEditorProps) {
+export type JsonEditorRef = {
+  updateData: (data: Record<string, any>) => void
+}
+
+const JsonEditor = forwardRef<JsonEditorRef, JsonEditorProps>((props, ref) => {
   const [editObject, setEditObject] = useState<any>(JSON.parse(JSON.stringify(props.data)))
+  
   useEffect(() => {
-    props.onChange(editObject)
+      props.onChange(editObject)
   }, [editObject])
+
+  useImperativeHandle(ref, () => ({
+    updateData: (data: Record<string, any>) => {
+      setEditObject(JSON.parse(JSON.stringify(data)))
+    }
+  }))
 
   return (
     <div className="jsonEditorContainer" style={{ width: props.width ?? 500 }}>
@@ -33,6 +44,6 @@ function JsonEditor(props: JsonEditorProps) {
       />
     </div>
   )
-}
+})
 
 export default JsonEditor
