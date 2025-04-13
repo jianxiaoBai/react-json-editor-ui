@@ -1,4 +1,3 @@
-import './styles/index.less'
 import './ui/styles.css'
 import React, { useEffect, useState, forwardRef, useImperativeHandle } from 'react'
 import JsonView from './components/JsonView'

@@ -235,3 +235,64 @@
 .ui-icon-caret-down.up {
   transform: rotate(360deg);
 }
+
+/* JSON编辑器样式 */
+.jsonEditorContainer {
+  line-height: 1;
+  font-size: 12px;
+}
+
+.jsonEditorContainer .objectContent,
+.jsonEditorContainer .arrayContent {
+  position: relative;
+}
+
+.jsonEditorContainer .objectContent .jsonKey,
+.jsonEditorContainer .objectContent .jsonValue,
+.jsonEditorContainer .arrayContent .jsonKey,
+.jsonEditorContainer .arrayContent .jsonValue {
+  margin-right: 10px;
+}
+
+.jsonEditorContainer .arrayContent {
+  margin-left: 20px;
+}
+
+.jsonEditorContainer .indexLine {
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.jsonEditorContainer .tools {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.jsonEditorContainer .tools .iconSubtraction {
+  margin-left: 10px;
+}
+
+.jsonEditorContainer .addItem {
+  display: flex;
+  margin-top: 10px;
+}
+
+.jsonEditorContainer .mt15 {
+  display: inline-block;
+  margin-top: 7px;
+}
+
+.jsonEditorContainer .collapse {
+  position: relative;
+}
+
+.jsonEditorContainer .collapse.down {
+  transition: transform .2s ease;
+  transform: rotate(270deg);
+}
+
+.jsonEditorContainer .collapse.up {
+  transition: transform .2s ease;
+  transform: rotate(360deg);
+}
