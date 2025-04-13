@@ -190,7 +190,7 @@ function JsonView(props: JsonViewProps) {
     }
     return (
       <div
-        className="objectContent"
+        className="object-content"
         style={{ marginLeft: defaultLevel === deepLevel ? '0' : '20px' }}
       >
         <div style={{ marginTop: '10px' }}>
@@ -198,9 +198,9 @@ function JsonView(props: JsonViewProps) {
             const uniqueKey = `${parentUniqueKey}-${index}`
             const fieldValue = sourceData[fieldKey]
             return (
-              <div key={uniqueKey} className="indexLine">
+              <div key={uniqueKey} className="index-line">
                 <CollapsePart uniqueKey={uniqueKey} fieldValue={fieldValue} />
-                <span className="jsonKey">
+                <span className="json-key">
                   <Input
                     size="small"
                     style={{ width: '100px' }}
@@ -213,7 +213,7 @@ function JsonView(props: JsonViewProps) {
                 </span>
                 <b>{getPlaceholder(fieldValue)}</b>
                 {!allowMap[uniqueKey] && (
-                  <span className="jsonValue">
+                  <span className="json-value">
                     {getValue(
                       fieldValue,
                       fieldKey,

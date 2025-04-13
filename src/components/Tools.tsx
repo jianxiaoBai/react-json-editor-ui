@@ -31,7 +31,7 @@ function ToolsView(props: {
               ))}
             </Select>
           </span>
-          <span className="iconSubtraction">
+          <span className="icon-subtraction">
             <MinusSquareOutlined
               style={{ color: '#E74C3C' }}
               onClick={() => onClickDelete(props.fieldKey, props.sourceData)}

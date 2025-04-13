@@ -17,13 +17,13 @@ type Props = {
 function ArrayView(props: Props) {
   const { allowMap } = useContext(ConfigContext)
   return (
-    <div className="arrayContent">
+    <div className="array-content">
       <div style={{ marginTop: '10px' }}>
         {props.fieldValue.map((item: any, index: number) => {
           const uniqueKey = `${props.parentUniqueKey}-${index}`
           return (
-            <div className="indexLine" key={uniqueKey}>
-              <span className="jsonKey">
+            <div className="index-line" key={uniqueKey}>
+              <span className="json-key">
                 <span style={{ marginRight: '5px' }}>{index + 1}.</span>
               </span>
               <CollapsePart uniqueKey={uniqueKey} fieldValue={item} />
@@ -31,7 +31,7 @@ function ArrayView(props: Props) {
                 <b className="mt15">{getPlaceholder(item)}</b>
               ) : null}
               {!allowMap[uniqueKey] && (
-                <span className="jsonValue">
+                <span className="json-value">
                   {props.getValue(
                     item,
                     index,

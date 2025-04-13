@@ -1,15 +1,15 @@
 /* 基础样式 */
-:root {
-  --primary-color: #1890ff;
-  --border-color: #d9d9d9;
-  --text-color: rgba(0, 0, 0, 0.85);
-  --background-color: #fff;
-  --hover-color: #40a9ff;
-  --disabled-color: rgba(0, 0, 0, 0.25);
-  --disabled-bg: #f5f5f5;
-  --border-radius: 2px;
-  --transition-duration: 0.3s;
-  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+.json-editor-container {
+  --json-editor-primary-color: #1890ff;
+  --json-editor-border-color: #d9d9d9;
+  --json-editor-text-color: rgba(0, 0, 0, 0.85);
+  --json-editor-background-color: #fff;
+  --json-editor-hover-color: #40a9ff;
+  --json-editor-disabled-color: rgba(0, 0, 0, 0.25);
+  --json-editor-disabled-bg: #f5f5f5;
+  --json-editor-border-radius: 2px;
+  --json-editor-transition-duration: 0.3s;
+  --json-editor-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* 输入框样式 */
@@ -17,21 +17,21 @@
   box-sizing: border-box;
   margin: 0;
   padding: 4px 11px;
-  color: var(--text-color);
+  color: var(--json-editor-text-color);
   font-size: 14px;
   line-height: 1.5715;
-  background-color: var(--background-color);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  transition: all var(--transition-duration);
+  background-color: var(--json-editor-background-color);
+  border: 1px solid var(--json-editor-border-color);
+  border-radius: var(--json-editor-border-radius);
+  transition: all var(--json-editor-transition-duration);
 }
 
 .ui-input:hover {
-  border-color: var(--hover-color);
+  border-color: var(--json-editor-hover-color);
 }
 
 .ui-input:focus {
-  border-color: var(--hover-color);
+  border-color: var(--json-editor-hover-color);
   outline: 0;
   box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
 }
@@ -62,13 +62,13 @@
   box-sizing: border-box;
   margin: 0;
   padding: 4px 11px;
-  color: var(--text-color);
+  color: var(--json-editor-text-color);
   font-size: 14px;
   line-height: 1.5715;
-  background-color: var(--background-color);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  transition: all var(--transition-duration);
+  background-color: var(--json-editor-background-color);
+  border: 1px solid var(--json-editor-border-color);
+  border-radius: var(--json-editor-border-radius);
+  transition: all var(--json-editor-transition-duration);
   appearance: none;
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
   background-repeat: no-repeat;
@@ -78,11 +78,11 @@
 }
 
 .ui-select:hover {
-  border-color: var(--hover-color);
+  border-color: var(--json-editor-hover-color);
 }
 
 .ui-select:focus {
-  border-color: var(--hover-color);
+  border-color: var(--json-editor-hover-color);
   outline: 0;
   box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
 }
@@ -126,15 +126,15 @@
   max-height: 256px;
   margin-top: 4px;
   overflow-y: auto;
-  background-color: var(--background-color);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
+  background-color: var(--json-editor-background-color);
+  border-radius: var(--json-editor-border-radius);
+  box-shadow: var(--json-editor-box-shadow);
 }
 
 .ui-autocomplete-option {
   padding: 5px 12px;
   cursor: pointer;
-  transition: background var(--transition-duration);
+  transition: background var(--json-editor-transition-duration);
 }
 
 .ui-autocomplete-option:hover {
@@ -146,19 +146,19 @@
   box-sizing: border-box;
   margin: 0;
   padding: 4px 15px;
-  color: var(--text-color);
+  color: var(--json-editor-text-color);
   font-size: 14px;
   line-height: 1.5715;
-  background-color: var(--background-color);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
+  background-color: var(--json-editor-background-color);
+  border: 1px solid var(--json-editor-border-color);
+  border-radius: var(--json-editor-border-radius);
   cursor: pointer;
-  transition: all var(--transition-duration);
+  transition: all var(--json-editor-transition-duration);
 }
 
 .ui-button:hover {
-  color: var(--hover-color);
-  border-color: var(--hover-color);
+  color: var(--json-editor-hover-color);
+  border-color: var(--json-editor-hover-color);
 }
 
 .ui-button-sm {
@@ -217,7 +217,7 @@
 }
 
 .ui-icon-plus-square {
-  color: var(--primary-color);
+  color: var(--json-editor-primary-color);
 }
 
 .ui-icon-minus-square {
@@ -225,7 +225,7 @@
 }
 
 .ui-icon-caret-down {
-  transition: transform .2s ease;
+  transition: transform var(--json-editor-transition-duration);
 }
 
 .ui-icon-caret-down.down {
@@ -237,62 +237,62 @@
 }
 
 /* JSON编辑器样式 */
-.jsonEditorContainer {
+.json-editor-container {
   line-height: 1;
   font-size: 12px;
 }
 
-.jsonEditorContainer .objectContent,
-.jsonEditorContainer .arrayContent {
+.json-editor-container .object-content,
+.json-editor-container .array-content {
   position: relative;
 }
 
-.jsonEditorContainer .objectContent .jsonKey,
-.jsonEditorContainer .objectContent .jsonValue,
-.jsonEditorContainer .arrayContent .jsonKey,
-.jsonEditorContainer .arrayContent .jsonValue {
+.json-editor-container .object-content .json-key,
+.json-editor-container .object-content .json-value,
+.json-editor-container .array-content .json-key,
+.json-editor-container .array-content .json-value {
   margin-right: 10px;
 }
 
-.jsonEditorContainer .arrayContent {
+.json-editor-container .array-content {
   margin-left: 20px;
 }
 
-.jsonEditorContainer .indexLine {
+.json-editor-container .index-line {
   position: relative;
   margin-bottom: 5px;
 }
 
-.jsonEditorContainer .tools {
+.json-editor-container .tools {
   position: absolute;
   right: 0;
   top: 0;
 }
 
-.jsonEditorContainer .tools .iconSubtraction {
+.json-editor-container .tools .icon-subtraction {
   margin-left: 10px;
 }
 
-.jsonEditorContainer .addItem {
+.json-editor-container .addItem {
   display: flex;
   margin-top: 10px;
 }
 
-.jsonEditorContainer .mt15 {
+.json-editor-container .mt15 {
   display: inline-block;
   margin-top: 7px;
 }
 
-.jsonEditorContainer .collapse {
+.json-editor-container .collapse {
   position: relative;
 }
 
-.jsonEditorContainer .collapse.down {
-  transition: transform .2s ease;
+.json-editor-container .collapse.down {
+  transition: transform var(--json-editor-transition-duration);
   transform: rotate(270deg);
 }
 
-.jsonEditorContainer .collapse.up {
-  transition: transform .2s ease;
+.json-editor-container .collapse.up {
+  transition: transform var(--json-editor-transition-duration);
   transform: rotate(360deg);
 }

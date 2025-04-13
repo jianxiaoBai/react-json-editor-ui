@@ -33,7 +33,7 @@ const JsonEditor = forwardRef<JsonEditorRef, JsonEditorProps>((props, ref) => {
   }))
 
   return (
-    <div className="jsonEditorContainer" style={{ width: props.width ?? 500 }}>
+    <div className="json-editor-container" style={{ width: props.width ?? 500 }}>
       <JsonView
         {...{
           editObject,
