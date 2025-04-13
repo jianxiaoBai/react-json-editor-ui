@@ -17,7 +17,9 @@
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
-    "analyze": "size-limit --why"
+    "analyze": "size-limit --why",
+    "predeploy": "cd example && yarn install && yarn build",
+    "deploy": "gh-pages -d www"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -48,6 +50,7 @@
   ],
   "devDependencies": {
     "@size-limit/preset-small-lib": "^8.0.1",
+    "gh-pages": "^5.0.0",
     "@types/lodash.clonedeep": "^4.5.7",
     "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
